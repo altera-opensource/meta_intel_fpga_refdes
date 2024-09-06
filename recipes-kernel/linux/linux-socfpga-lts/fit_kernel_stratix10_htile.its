@@ -47,6 +47,17 @@
 			};
 		};
 
+		fdt-3 {
+			description = "socfpga_socdk_pr";
+			data = /incbin/("./socfpga_stratix10_socdk_pr.dtb");
+			type = "flat_dt";
+			arch = "arm64";
+			compression = "none";
+			hash {
+				algo = "crc32";
+			};
+		};
+
 		fdt-4 {
 			description = "socfpga_socdk_combined";
 			data = /incbin/("./socfpga_stratix10_socdk.dtb");
@@ -61,6 +72,18 @@
 		fpga-1 {
 			description = "FPGA bitstream for NAND";
 			data = /incbin/("./nand.core.rbf");
+			type = "fpga";
+			arch = "arm64";
+			compression = "none";
+			load = <0xA000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		fpga-3 {
+			description = "FPGA bitstream for PR";
+			data = /incbin/("./ghrd_pr.core.rbf");
 			type = "fpga";
 			arch = "arm64";
 			compression = "none";
@@ -109,8 +132,20 @@
 			};
 		};
 
+		board-3 {
+			description = "board_3";
+			kernel = "kernel";
+			fdt = "fdt-3";
+			fpga = "fpga-3";
+			signature {
+				algo = "crc32";
+				key-name-hint = "dev";
+				sign-images = "fdt-3", "kernel", "fpga-3";
+			};
+		};
+
 		board-4 {
-			description = "board_0";
+			description = "board_4";
 			kernel = "kernel";
 			fdt = "fdt-4";
 			fpga = "fpga-4";

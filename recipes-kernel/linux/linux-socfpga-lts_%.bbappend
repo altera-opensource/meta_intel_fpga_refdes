@@ -141,9 +141,11 @@ do_deploy:append() {
 		cp ${DTBDEPLOYDIR}/socfpga_stratix10_socdk.dtb ${B}
 		cp ${DTBDEPLOYDIR}/socfpga_stratix10_vanilla.dtb ${B}
 		cp ${DTBDEPLOYDIR}/socfpga_stratix10_socdk_nand.dtb ${B}
+		cp ${DTBDEPLOYDIR}/socfpga_stratix10_socdk_pr.dtb ${B}
 		# core.rbf
 		cp ${DEPLOY_DIR_IMAGE}/${MACHINE}_${IMAGE_TYPE}_ghrd/ghrd.core.rbf ${B}
 		cp ${DEPLOY_DIR_IMAGE}/${MACHINE}_${IMAGE_TYPE}_ghrd/nand.core.rbf ${B}
+		cp ${DEPLOY_DIR_IMAGE}/${MACHINE}_${IMAGE_TYPE}_ghrd/ghrd_pr.core.rbf ${B}
 	fi
 
 	# Generate and deploy kernel.itb
